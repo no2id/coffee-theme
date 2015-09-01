@@ -309,3 +309,14 @@ add_filter( 'get_search_form', 'coffee_search_form' );
 	echo apply_filters( 'coffee_credits_text', $text );
 }
 add_action( 'coffee_credits', 'coffee_display_credits' );
+
+// Adds in support for Featured Image;
+// see http://codex.wordpress.org/Post_Thumbnails
+if ( function_exists( 'add_theme_support' ) ) { 
+    add_theme_support( 'post-thumbnails' );
+    set_post_thumbnail_size( 150, 150, true ); // default Post Thumbnail dimensions (cropped)
+
+    // additional image sizes
+    // delete the next line if you do not need additional image sizes
+    add_image_size( 'category-thumb', 300, 9999 ); //300 pixels wide (and unlimited height)
+}
